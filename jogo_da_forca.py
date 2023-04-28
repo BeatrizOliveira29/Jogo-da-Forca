@@ -17,30 +17,30 @@ vazio = """
 
 """
 cabeça = """
-    0
+     0
 """
 
 tronco = """
-    0
-    |
+     0
+     |
 """
 braço_esquerdo = """
-    0
-   /|
+     0
+    /|
 """
 braço_direito = """
-    0
-   /|\
+     0
+    /|\
 """
 perna_esquerda = """
-    0
-   /|\
-   /
+     0
+    /|\
+    /
 """
 perna_direita = """
-    0
-   /|\
-   / \
+     0
+    /|\
+    / \
 """
 chances = [vazio, cabeça, tronco, braço_esquerdo, braço_direito, perna_esquerda, perna_direita]
 
