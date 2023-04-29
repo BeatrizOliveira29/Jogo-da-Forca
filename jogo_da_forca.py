@@ -6,70 +6,87 @@ with open('dicionario.txt') as arquivo:
 
 palavra = choice(lista_de_palavras).upper()
 
-forca = """
+def forca(num_erros):
+    if num_erros == 1:
+        print(" ----")
+        print("|  |")
+        print("|  o")
+        print("|  ")
+        print("|  ")
+        print("|_  ")
+    elif num_erros == 2:
+        print(" ----")
+        print("|  |")
+        print("|  o")
+        print("|  |")
+        print("|  ")
+        print("|_  ")
+    elif num_erros == 3:
+        print(" ----")
+        print("|  |")
+        print("|  o")
+        print("|  |\ ")
+        print("|  ")
+        print("|_  ")
+    elif num_erros == 4:
+        print(" ----")
+        print("|  |")
+        print("|  o")
+        print("| /|\ ")
+        print("|  ")
+        print("|_  ")
+    elif num_erros == 5:
+        print(" ----")
+        print("|  |")
+        print("|  o")
+        print("| /|\ ")
+        print("|   \ ")
+        print("|_  ")
+    elif num_erros == 6:
+        print(" ----")
+        print("|  |")
+        print("|  o")
+        print("| /|\ ")
+        print("| / \ ")
+        print("|_  ")
 
-_____
-     |
-     |
-     -
-"""
-vazio = """
+opcao = ''
 
-"""
-cabeça = """
-     0
-"""
+while opcao != 's':
+    lista_de_palpites = []
+    num_erros = 0
+    num_acertos = 0
 
-tronco = """
-     0
-     |
-"""
-braço_esquerdo = """
-     0
-    /|
-"""
-braço_direito = """
-     0
-    /|\
-"""
-perna_esquerda = """
-     0
-    /|\
-    /
-"""
-perna_direita = """
-     0
-    /|\
-    / \
-"""
-chances = [vazio, cabeça, tronco, braço_esquerdo, braço_direito, perna_esquerda, perna_direita]
+    tamanho_da_palavra_secreta = len(palavra)
 
-acertos = 0
-erros = 0
-letras_acertadas = ''
-letras_erradas = ''
+    print("*** Jogo da Forca ***")
+    print(f"A palavra tem {tamanho_da_palavra_secreta} letras.")
 
-while acertos != len(palavra) and erros != 6:
-    mensagem = ''
-    for letra in palavra:
-        if letra in letras_acertadas:
-            mensagem += f'{letra} '
+    while num_erros < 6 and num_acertos != tamanho_da_palavra_secreta:
+        for letra in palavra:
+            if letra in lista_de_palpites:
+                print(letra, end=' ')    
+            else:
+                print("_", end=' ')
+        print()    
+
+        letra = input("Digite uma letra: ").upper()
+
+        if letra in lista_de_palpites:
+            print(f"A letra {letra} já foi utilizada! O_O")
         else:
-            mensagem += '_ '
-    print(forca+chances[erros])
-    print(mensagem)
-
-    letra = input('Digite uma letra: ').upper()
-
-    if letra in letras_acertadas+letras_erradas:
-        print('Você já tentou essa letra! >_<')
-        continue
-
-    if letra in palavra:
-        print('Você acertou a letra! UwU')
-        letras_acertadas += letra
-        acertos += 1
-    else:
-        print('Você errou a letra! T.T')
-        letras_erradas += letra
-        erros += 1
+            lista_de_palpites.append(letra)
+            if letra in palavra:
+                print("Acertou! UwU")
+                num_acertos += palavra.count(letra)
+            else:
+                print("Errou! -_-")
+                num_erros += 1
+                forca(num_erros)
+            
+    if num_erros == 6:
+        print("Você perdeu! T.T")
+    elif num_acertos == tamanho_da_palavra_secreta:
+        print("Você ganhou! >.<")
+    
+    opcao = input("Digite `s` para sair ou qualquer coisa para jogar novamente => ").lower()
