@@ -2,5 +2,4 @@ Olá pessoal, tudo bem? Fiz um código em Python do Jogo da Forca (Finalmente co
 utilizando palavras importadas do arquivo dicionario.txt,
 achei bem mais dinâmico jogar com palavras aleatórias do que apenas uma em específico, se não a brincadeira não teria graça, não é mesmo?
 Qualquer coisa, contate comigo via e-mail: headstonebeatriz123@gmail.com
-É isso!
 Bjs! >.< <3
